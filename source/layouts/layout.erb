@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <title>My Profile</title>
+  <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+  <!--<link href="style.css" rel="stylesheet">-->
+  <%= stylesheet_link_tag "style" %>
+</head>
+<body>
+  <header class="header-banner">
+    <span class="banner-text">Let's Talk About &#60;html&#62; and .css</span>
+  </header>
+  <div>
+    <h1 class="text-center">
+      <span class="main-text-color">Hi, I'm</span>
+      <span class="main-text-color">Yuna</span>
+      <span class="main-text-color exclamation-mark">!</span>
+    </h1>
+    <div class="image-parent">
+      <img class="cat" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg">
+      <img class="cat" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg">
+      <img class="cat" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg">
+      <img class="cat" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg">
+      <img class="cat" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg">
+    </div>
+    <h2 class="main-text-color text-center">Here's a Row of Cats</h3>
+    <p class="text-center profile-text">I studied industrial design at Parsons in Union Square, working in 3D printing, pottery studios, and restaurants before learning web development. Now I work at a tech startup building investment software for companies. A lot of my free time is spent rock climbing, seeking new foods, and riding my bike around the city.
+    </p>
+  </div>
+  <section>
+    <h4 class="main-text-color text-center">Some Videos I Enjoy</h4>
+    <div class="video-container">
+      <iframe class="video-grid" src="https://www.youtube.com/embed/6okxuiiHx2w?rel=0" frameborder="0" allowfullscreen></iframe>
+      <iframe class="video-grid" src="https://www.youtube.com/embed/ctutKTrf_NY?rel=0" frameborder="0" allowfullscreen></iframe>
+      <iframe class="video-grid" src="https://www.youtube.com/embed/2WkWNDDrQO4?rel=0" frameborder="0" allowfullscreen></iframe>
+      <iframe class="video-grid" src="https://www.youtube.com/embed/oVXZTmi2ruI?rel=0" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+  <section>
+    <% auth = { username: 'ykim632', password: 'classpword' } %>
+    <% response = HTTParty.get('https://api.mysportsfeeds.com/v1.2/pull/nhl/current/overall_team_standings.json?team=phi', basic_auth: auth) %>
+    <% data = JSON.parse(response.to_s) %>
+    <% entry = data["overallteamstandings"]["teamstandingsentry"][0] %>
+    <% team = entry["team"] %>
+    <% stats = entry["stats"] %>
+    <h3 class="main-text-color text-center">Apparently now I care about hockey, so here's some information about...</h3>
+    <h1 class="text-center">
+      <span class="flyers-orange">The</span>
+      <span><%= team["City"] %></span>
+      <span class="flyers-orange"><%= team["Name"] %></span>
+    </h2>
+    <table class="flyers-info">
+      <thead>
+        <tr>
+          <th class="cell">Games</th>
+          <th class="cell">Wins</th>
+          <th class="cell">Ties</th>
+          <th class="cell">Losses</th>
+          <th class="cell">Powerplays</th>
+          <th class="cell">Penalties</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="cell"><%= stats["GamesPlayed"]["#text"] %></td>
+          <td class="cell"><%= stats["stats"]["Wins"]["#text"] %></td>
+          <td class="cell"><%= stats["stats"]["Ties"]["#text"] %></td>
+          <td class="cell"><%= stats["stats"]["Losses"]["#text"] %></td>
+          <td class="cell"><%= stats["stats"]["Powerplays"]["#text"] %></td>
+          <td class="cell"><%= stats["stats"]["Penalties"]["#text"] %></td>
+        </tr>  
+      </tbody>
+    </table>
+  </section>
+  <footer class="footer-banner">
+    <span class="banner-text"> November 6, 2017 </span>
+  </footer>
+</body>
+</html>

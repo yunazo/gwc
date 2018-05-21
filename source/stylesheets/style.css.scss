@@ -1,0 +1,109 @@
+body {
+  font-family: 'Slabo 27px', serif;
+  margin: 0;
+  background-color: rgba(222, 223, 224, 1);
+}
+
+h1 {
+  font-size: 38px;
+}
+
+h4 {
+  font-size: 25px;
+}
+
+.header-banner {
+  background-color: rgba(20, 139, 230, 1);
+  height: 60px;
+  width: 100vw;
+}
+
+.banner-text {
+  color: white;
+  display: inline-block;
+  font-size: 30px;
+  line-height: 30px;
+  padding: 15px 0 15px 30px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.main-text-color {
+  color: rgba(76, 1, 130, 1);
+}
+
+#name {
+  color: rgba(20, 139, 230, 1);
+}
+
+.cat{
+  width: auto;
+  height: 200px;
+  margin: 10px;
+}
+
+.profile-text {
+  margin-left: calc(50% - 250px);
+  width: 500px;
+}
+
+.video-container {
+  margin: 0 auto 50px auto;
+  position: relative;
+  width: 80%;
+}
+
+.video-grid {
+  height: 350px;
+  width: calc(50% - 10px);
+}
+
+.footer-banner {
+  background-color: rgba(20, 139, 230, 1);
+  height: 60px;
+  width: 100vw;
+}
+
+.exclamation-mark {
+  display: inline-block;
+  position: relative;
+  left: -6px;
+}
+
+.image-parent {
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
+  justify-content: center;
+}
+
+.menu-list {
+  display: flex;
+  text-decoration: none;
+  list-style: none;
+}
+
+.menu-list--item {
+  flex-direction: row;
+}
+
+$flyers-orange: rgba(255,97,0,1);
+
+.flyers-orange {
+  color: $flyers-orange;
+}
+
+.flyers-info {
+  display: table;
+  margin: 50px auto;
+  border-collapse: collapse;
+  
+  .cell {
+    border: 1px solid $flyers-orange;
+    padding: 15px;
+    text-align: center;
+    vertical-align: center;
+  }
+}
